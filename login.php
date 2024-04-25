@@ -1,3 +1,9 @@
+<?php
+    session_start();
+
+    if(isset($_SESSION['role'])) header('location: home.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,25 +15,38 @@
 <body>
 
     <div class="form-container">
-        <!-- <h2>Login</h2> -->
+        <!-----------LOGIN---------------->
         <center>
           <img src="images/logo-with-text.png" alt="barrio-liwanag-logo-with-text" width="250" height="100">
         </center>
-        <form action="/login" method="post">
+        <form method="post" action="php/login_check.php">
           <div class="form-group">
-            <label for="name">Username:</label>
-            <input type="text" id="name" name="username" placeholder="Enter Your Username" required autocomplete="off">
+            <input type="text" name="username" required>
+            <label>Username</label>
           </div>
           <div class="form-group">
-            <label for="password">Password:</label>
-            <input class="button" type="password" id="password" name="password" placeholder="Password" required>
+            <input type="password" name="password" required>
+            <label>Password</label>
           </div>
           <center>
-            <button type="submit" class="submit-btn">Login</button>
+            <button type="submit" name="login" value="Login">Login</button>
           </center>
+
+          <!-- showcase invalid user/pass on screen --> 
+          <center>
+            <?php
+              if(isset($_GET['error']) && $_GET['error'] == 1) {
+                if(isset($_SESSION['error'])) {
+                  echo '<div id="error-message">' . $_SESSION['error'] . '</div>';
+                  unset($_SESSION['error']);
+                }
+              }
+            ?>
+          </center>
+
         </form>
         <center>
-          <p>Don't have an account? <a class="link" href="signup.php">SignUp</a></p>
+          <p>Don't have an account? <a class="link" href="signup.php">Sign Up</a></p>
         </center>
       </div>
     

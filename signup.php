@@ -9,21 +9,22 @@
 <body>
 
     <div class="form-container">
-        <!-- <h2>SignUp</h2> -->
+        <!-----------SIGN UP---------------->
         <center>
           <img src="images/logo-with-text.png" alt="barrio-liwanag-logo-with-text" width="250" height="100">
         </center>
-        <form action="/signup" method="post">
+        <form method="post" action="php/signup_check.php">
           <div class="form-group">
-            <label for="name">Username:</label>
-            <input type="text" id="name" name="username" placeholder="Enter Your Username" required autocomplete="off">
+            <input type="text" name="username" required>
+            <label>Username</label>
           </div>
           <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="password" name="password" required>
+            <label>Password</label>
           </div>
           <center>
-            <button type="submit" class="submit-btn">SignUp</button>
+            <input type="hidden" name="Action" value="create">
+            <button input type="submit" value="Register">Sign up</button>
           </center>
           
         </form>
