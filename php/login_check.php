@@ -4,7 +4,7 @@ session_start();
 $dbHost = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName = "main";
+$dbName = "barrio-liwanag"; //change niyo ito according sa name ng database niyo
 
 // Connect to Database
 $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
@@ -28,7 +28,7 @@ if(isset($_POST['login'])) {
     $_SESSION['password'] = $password;
     $_SESSION['role'] = $row['role'];
 
-    <!-- FOR REDIRECTING HOME PAGE -->
+    // FOR REDIRECTING HOME PAGE
     header('Location: ../home.php');
 
   } else {

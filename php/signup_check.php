@@ -3,7 +3,7 @@
 $dbHost     = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName     = "main";
+$dbName     = "barrio-liwanag"; //change niyo ito according sa name ng database niyo
 
 // Connect to Database
 $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
