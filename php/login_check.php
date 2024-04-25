@@ -28,6 +28,7 @@ if(isset($_POST['login'])) {
     $_SESSION['password'] = $password;
     $_SESSION['role'] = $row['role'];
 
+    <!-- FOR REDIRECTING HOME PAGE -->
     header('Location: ../home.php');
 
   } else {
