@@ -76,6 +76,10 @@ a {
 	border-radius: 5px;
 }
 
+.calendardiv{
+	margin: 0 auto;
+	width: 50% ;
+}
 
 /* ================================= 
   Media Queries of the Navigation Bar

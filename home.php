@@ -3,10 +3,18 @@
    session_start();
    if(!isset($_SESSION['role'])) header('location: login.php');
 ?>
+<!-- include calendar -->
+<?php
+    include 'Calendar.php';
+    $calendar = new Calendar();
+    //code to add event
+    $calendar->add_event('test', '2024-04-23', 1, 'green');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="css/mainstyle.css">
+<link rel="stylesheet" href="css/calendar.css">
 <title>Barrio Liwanag</title>
 <link href="images/logo.png" rel="icon">
 <head>
@@ -29,6 +37,11 @@
 	</header> 
     <h1 style="text-align: center;">Welcome to Home Page</h1>
 
+    <div class="calendardiv">
+        <!-- //calendar -->
+			<?=$calendar?>
+	</div>
+    
     <footer>
         <center>
         <p>&copy; Copyright Barrio Liwanag. All Rights Reserved 2024</p>
