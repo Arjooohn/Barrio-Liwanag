@@ -1,10 +1,12 @@
 
 body {
-    /* for some reason idk kung bakit ayaw lumabas nito */
-    background-image: url('images/barrio-liwanag-background-cover.png'); 
+    background-color: #FBF3D5;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+	font-family: 'Montserrat', sans-serif;
+	line-height: 1.6;
+	margin: 0;
 }
 
 footer {
@@ -14,12 +16,7 @@ footer {
 * {
 	box-sizing: border-box;
 }
-body {
-	font-family: 'Montserrat', sans-serif;
-	line-height: 1.6;
-	margin: 0;
-	min-height: 100vh;
-}
+
 ul {
   margin: 0;
   padding: 0;
@@ -43,8 +40,7 @@ a {
 }
 
 .main-nav {
-	margin-top: 5px;
-
+	margin: 10px;
 }
 .logo a,
 .main-nav a {
@@ -64,8 +60,6 @@ a {
 }
 
 .header {
-	padding-top: .5em;
-	padding-bottom: .5em;
 	border: 1px solid #a2a2a2;
 	background-color: #B7BE9E;
 	-webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
@@ -76,15 +70,18 @@ a {
 	border-radius: 5px;
 }
 
-.calendardiv{
-	margin: 0 auto;
-	width: 50% ;
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
 }
 
 /* ================================= 
   Media Queries of the Navigation Bar
 ==================================== */
-@media (min-width: 769px) {
+@media (min-width: 750px) {
 	.header,
 	.main-nav {
 		display: flex;

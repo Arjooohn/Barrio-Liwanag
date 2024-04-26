@@ -33,14 +33,20 @@
                 <li><a href="#">About Us</a></li>
                 <li><a href="php/logout.php">Logout</a></li>
             </ul>
-      
 	</header> 
-    <h1 style="text-align: center;">Welcome to Home Page</h1>
 
-    <div class="calendardiv">
-        <!-- //calendar -->
-			<?=$calendar?>
-	</div>
+    <section class="parallax" style="background-image: url('images/barrio-liwanag-background-cover.png');">
+        <div>
+            
+        </div>
+    </section>
+
+    <section>
+        <div class="calendardiv">
+            <!-- //calendar -->
+            <?=$calendar?>
+	    </div>
+    </section>
     
     <footer>
         <center>
