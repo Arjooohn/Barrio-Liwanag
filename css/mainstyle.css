@@ -70,12 +70,36 @@ a {
 	border-radius: 5px;
 }
 
+/* parallax only for the home page */
 .parallax {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image: url('../images/barrio-liwanag-background-cover.png');
+    background-blend-mode: multiply;
     background-size: cover;
-    min-height: 100vh;
+    background-position: center;
+    min-height: 86vh;
+}
+
+/* parallax for the events page (with oppacity) */
+.parallax-events {
+    background-image: url('../images/barrio-liwanag-background-cover.png');
+	opacity: 75%;
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+}
+
+/* Notification in Home Page */
+.notification {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-size: 14px;
+	text-align: center;
 }
 
 /* ================================= 
@@ -95,12 +119,67 @@ a {
 		max-width: 1150px;
 	}
 	}
-
 }
 @media (min-width: 1025px) {
 	.header {
 		flex-direction: row;
 		justify-content: space-between;
 	}
+}
 
+/* CSS for Contact Us Page */
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 90px 90px;
+  }
+  
+  .container-left,
+  .container-right {
+	width: 100%;
+	padding: 20px;
+  }
+  
+  @media (min-width: 768px) {
+   .container-left {
+	  width: 60%;
+	}
+  
+   .container-right {
+	width: 40%;
+	border-radius: 25px;
+	background: #e0e0e0;
+	box-shadow:  22px 22px 50px #B7BE9E,
+				-22px -22px 50px #B7BE9E;
+	}
+  }
+
+/* Event Page CSS */
+.event-list {
+	padding: 6vh;
+	margin: 50px;
+	color: white;
+	border-radius: 25px;
+	background: black;
+	box-shadow:  22px 22px 20px #D9D9D9,
+				-22px -22px 20px #D9D9D9;
+	display: flex;
+	flex-wrap: wrap;
+}
+.event-image {
+    width: 40%;
+}
+
+.event-text {
+    width: 60%;
+    padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .event-image,.event-text {
+        width: 100%;
+    }
+   .event-text {
+        padding-left: 0;
+    }
 }

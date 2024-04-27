@@ -27,25 +27,41 @@
     <header class="header">
 		<h1 class="logo"><a href="#"><img src="images/logo-with-text.png" alt="barrio-liwanag-logo-with-text" width="200" height="75"></a></h1>
             <ul class="main-nav">
-                <li><a href="php/home.php">Home</a></li>
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="users/events-user.php">Events</a></li>
+                <li><a href="users/contact-us.php">Contact Us</a></li>
+                <li><a href="users/about-us.ph">About Us</a></li>
                 <li><a href="php/logout.php">Logout</a></li>
             </ul>
 	</header> 
 
-    <section class="parallax" style="background-image: url('images/barrio-liwanag-background-cover.png');">
-        <div>
-            
+    <section class="parallax">
+        <div class="notification">
+            <p>Scroll Down to See the Events for this Month!</p>
         </div>
     </section>
 
+    <!-- Javascript for the notification  -->
+    <script>
+        const notification = document.querySelector('.notification');
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            if (scrollPosition > 0) {
+                notification.style.display = 'none';
+            } else {
+                notification.style.display = 'block';
+            }
+        });        notification.style.display = 'block';
+    </script>
+
     <section>
-        <div class="calendardiv">
-            <!-- //calendar -->
-            <?=$calendar?>
-	    </div>
+        <center>
+            <div class="calendardiv">
+                <!-- //calendar -->
+                <?=$calendar?>
+            </div>
+        </center>
+        
     </section>
     
     <footer>
