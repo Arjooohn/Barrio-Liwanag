@@ -9,7 +9,32 @@
     $calendar = new Calendar();
     //code to add event
     $calendar->add_event('test', '2024-04-23', 1, 'green');
+    $calendar->add_event('multipledays', '2024-04-14', 5);
+
+    require_once "config.php";
+    $sql = "SELECT * FROM events "; //change events to database name
+    // Execute the query
+    $result = mysqli_query($conn, $sql);
+
+    // Check if the query was successful
+    if ($result) {
+        // Loop through each row in the result set
+        while ($row = mysqli_fetch_assoc($result)) {
+            // Each event found will go through here
+            $eventname = $row['eventname']; //change
+            $eventdate = $row['date'];
+            $calendar->add_event($eventname, $eventdate, 1, 'green');
+        }
+        // Free the result set
+        mysqli_free_result($result);
+    } else {
+        // If the query fails, handle the error
+        echo "Error: " . mysqli_error($conn);
+    }
+
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
