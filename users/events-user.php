@@ -16,7 +16,7 @@
                 <li><a href="../home.php">Home</a></li>
                 <li><a href="events-user.php">Events</a></li>
                 <li><a href="contact-us.php">Contact Us</a></li>
-                <li><a href="about-us.ph">About Us</a></li>
+                <li><a href="about-us.php">About Us</a></li>
                 <li><a href="../php/logout.php">Logout</a></li>
             </ul>
 	</header> 

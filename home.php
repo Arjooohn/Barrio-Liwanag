@@ -55,7 +55,7 @@
                 <li><a href="home.php">Home</a></li>
                 <li><a href="users/events-user.php">Events</a></li>
                 <li><a href="users/contact-us.php">Contact Us</a></li>
-                <li><a href="users/about-us.ph">About Us</a></li>
+                <li><a href="users/about-us.php">About Us</a></li>
                 <li><a href="php/logout.php">Logout</a></li>
             </ul>
 	</header> 

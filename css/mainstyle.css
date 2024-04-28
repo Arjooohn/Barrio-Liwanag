@@ -149,8 +149,8 @@ a {
 	width: 40%;
 	border-radius: 25px;
 	background: #e0e0e0;
-	box-shadow:  22px 22px 50px #B7BE9E,
-				-22px -22px 50px #B7BE9E;
+	box-shadow:  5px 5px 10px #B7BE9E,
+				-5px -5px 10px #B7BE9E;
 	}
   }
 
