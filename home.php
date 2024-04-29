@@ -76,7 +76,7 @@
         });        notification.style.display = 'block';
     </script>
 
-    <section>
+    <!-- <section> -->
         <center>
             <div class="calendardiv">
                 <!-- //calendar -->
@@ -84,7 +84,7 @@
             </div>
         </center>
         
-    </section>
+    <!-- </section> -->
     
     <footer>
         <center>

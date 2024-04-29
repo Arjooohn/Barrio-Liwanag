@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="../css/mainstyle.css">
-<title>Barrio Liwanag</title>
 <link href="../images/logo.png" rel="icon">
 <head>
     <meta charset="UTF-8">

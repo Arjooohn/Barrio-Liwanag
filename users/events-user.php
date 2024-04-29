@@ -84,25 +84,25 @@
                 </div>
 
                 <!-- INSERT COLUMN HERE FOR THE EVENT DETAILS. CHECK EVENTS PAGE SA FIGMA -->
-                <div class="event-list">
-                    <div class="event-image">
-                        <img src="../images/logo-with-text.png" alt="Event Image">
-                    </div>
+                <button class="event-list">
+                    <!-- <div> -->
+                        <img class="event-image" src="../images/logo.png" alt="Event Image">
+                    <!-- </div> -->
                     <div class="event-text">
                         <h2>Event Name</h2>
                         <h4>Event Description</h4>
                     </div>
-                </div>
+                </button>
                 <!-- Another Event Sample  -->
-                <div class="event-list">
+                <!-- <div class="event-list">
                     <div class="event-image">
-                        <img src="../images/logo-with-text.png" alt="Event Image">
+                        <img src="../images/logo.png" alt="Event Image">
                     </div>
                     <div class="event-text">
-                        <h2>Event Name</h2>
-                        <h4>Event Description</h4>
+                        <h2>Event Name 1</h2>
+                        <h4>Event Description 1</h4>
                     </div>
-                </div>
+                </div> -->
                 <br>
             </center>
 
