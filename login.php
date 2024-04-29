@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/LSstyle.css">
+    <link href="images/logo.png" rel="icon">
 </head>
 <body>
 

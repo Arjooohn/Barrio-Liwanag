@@ -31,10 +31,7 @@
         // If the query fails, handle the error
         echo "Error: " . mysqli_error($conn);
     }
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

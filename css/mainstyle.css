@@ -79,7 +79,7 @@ a {
     min-height: 86vh;
 }
 
-/* parallax for the events page (with oppacity) */
+/* parallax only for the events page (with oppacity) */
 .parallax-events {
     background-image: url('../images/barrio-liwanag-background-cover.png');
 	opacity: 75%;
@@ -156,13 +156,13 @@ a {
 
 /* Event Page CSS */
 .event-list {
-	padding: 6vh;
+	padding: 5vh;
 	margin: 50px;
 	color: white;
 	border-radius: 25px;
-	background: black;
-	box-shadow:  22px 22px 20px #D9D9D9,
-				-22px -22px 20px #D9D9D9;
+	background: lightgray;
+	box-shadow:  15px 15px 20px lightgray,
+				-15px -15px 20px #D9D9D9;
 	display: flex;
 	flex-wrap: wrap;
 }

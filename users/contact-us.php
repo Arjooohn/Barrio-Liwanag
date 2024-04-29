@@ -45,6 +45,9 @@
             <!-- Right Container -->
             <div class="container-right">
                 <img src="../images/cover-pic-fb.jpg" alt="Barrio Liwanag Cover" width="100%">
+                <center>
+                    <strong style="font-size: 20px;"><h1>Barrio-Liwanag</h1></strong>
+                </center>
             </div>
         </div>
     </section>
