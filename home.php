@@ -7,9 +7,9 @@
 <?php
     include 'Calendar.php';
     $calendar = new Calendar();
-    //code to add event
-    $calendar->add_event('test', '2024-04-23', 1, 'green');
-    $calendar->add_event('multipledays', '2024-04-14', 5);
+    //sample code to add event
+    //$calendar->add_event('test', '2024-04-23', 1, 'green');
+    //$calendar->add_event('multipledays', '2024-04-14', 5);
 
     require_once "config.php";
     $sql = "SELECT * FROM events "; //change events to database name
@@ -21,9 +21,21 @@
         // Loop through each row in the result set
         while ($row = mysqli_fetch_assoc($result)) {
             // Each event found will go through here
-            $eventname = $row['eventname']; //change
-            $eventdate = $row['date'];
-            $calendar->add_event($eventname, $eventdate, 1, 'green');
+            $eventname = $row['eventname']; 
+            if($row['start_date'] == $row['end_date']){  //for single day events
+                $eventdate = $row['start_date'];
+                $calendar->add_event($eventname, $eventdate, 1, 'green');
+            }else{                                       //for multiple day events
+
+                $start_timestamp = strtotime($row['start_date']);
+                $end_timestamp = strtotime($row['end_date']);
+
+                $number_of_seconds = $end_timestamp - $start_timestamp;
+                $number_of_days = round($number_of_seconds / (60 * 60 * 24));
+
+                $eventdate = $row['start_date'];
+                $calendar->add_event($eventname, $eventdate, $number_of_days, 'green');
+            }
         }
         // Free the result set
         mysqli_free_result($result);

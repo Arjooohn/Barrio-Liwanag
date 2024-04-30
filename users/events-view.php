@@ -18,10 +18,10 @@
 
  <!-- Set variables here -->
  <?php
-    $_SESSION['event'] = "test1";
-    $queryname = $_SESSION['event'];
+    $_SESSION['eventid'] = "5";
+    $queryname = $_SESSION['eventid'];
     // Using prepared statement to prevent SQL injection
-    $sql = "SELECT * FROM events WHERE eventname = ?";
+    $sql = "SELECT * FROM events WHERE id = ?";
     
     // Prepare the SQL statement
     $stmt = $conn->prepare($sql);
@@ -41,7 +41,7 @@
         while ($row = mysqli_fetch_assoc($result)) {
             // Each event found will go through here
             $eventname = $row['eventname'];                                                                 //CHANGE THESE VARIABLES
-            $eventdate = $row['date'];
+            $eventdate = $row['start_date'];
             $eventdesc = $row['description'];
         }
         // Free the result set
