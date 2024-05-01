@@ -1,3 +1,13 @@
+<?php
+   //session start
+    session_start();
+    // Check if the user is not logged in, redirect to login page
+    if (!isset($_SESSION['role'])) {
+        header('Location: ../login.php');
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="../admin-css/logs.css">
@@ -14,7 +24,7 @@
                 <li><a href="content_dashboard.php">CONTENT DASHBOARD</a></li>
                 <li><a href="logs.php">LOGS</a></li>
                 <li><a href="admins.php">ADMINS</a></li>
-                <li><a href="logout.php">LOGOUT</a></li>
+                <li><a href="../php/logout.php">LOGOUT</a></li>
             </ul>
 	</header>
     <footer>

@@ -1,3 +1,13 @@
+<?php
+   //session start
+session_start();
+// Check if the user is not logged in, redirect to login page
+if (!isset($_SESSION['role'])) {
+    header('Location: ../login.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="../css/mainstyle.css">

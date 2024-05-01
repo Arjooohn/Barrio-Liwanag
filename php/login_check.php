@@ -9,7 +9,7 @@ $dbName = "barrio-liwanag"; //change niyo ito according sa name ng database niyo
 // Connect to Database
 $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
 if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
+  die("Connection failed: ". mysqli_connect_error());
 }
 
 // LOGIN
@@ -28,13 +28,19 @@ if(isset($_POST['login'])) {
     $_SESSION['password'] = $password;
     $_SESSION['role'] = $row['role'];
 
+    // FOR REDIRECTING ADMIN TO DASHBOARD
+    if($_SESSION['role'] == 'admin') {
+      header('Location:../admin/content_dashboard.php');
+    }
     // FOR REDIRECTING HOME PAGE
-    header('Location: ../home.php');
+    else if ($_SESSION['role'] == 'user') {
+      header('Location:../home.php');
+    }
 
   } else {
     // Invalid Login
     $_SESSION['error'] = "Invalid username or password";
-    header('Location: ../login.php?error=1');
+    header('Location:../login.php?error=1');
     exit();
   }
 }
