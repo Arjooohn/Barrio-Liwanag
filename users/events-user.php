@@ -1,11 +1,18 @@
 <?php
-   //session start
+//session start
 session_start();
 // Check if the user is not logged in, redirect to login page
 if (!isset($_SESSION['role'])) {
     header('Location: ../login.php');
     exit();
 }
+
+// Include config file to establish database connection
+require_once "../config.php";
+
+// Retrieve events data with images from the database
+$sql = "SELECT * FROM events";
+$result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -123,7 +130,19 @@ if (!isset($_SESSION['role'])) {
     <section >
         <center>
             <div>
-
+                <!-- Display images -->
+                <div class="image-gallery">
+                    <?php
+                    // Loop through each event and display its image
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        // Output the image using base64 encoding
+                        // Adjust the column name according to your database structure
+                        $image_data = base64_encode($row['event_images_1']);
+                        $image_src = 'data:image/jpeg;base64,' . $image_data; 
+                        echo '<img src="' . $image_src . '" alt="Event Image">';
+                    }
+                    ?>
+                </div>
             </div>
         </center>
 

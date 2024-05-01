@@ -1,5 +1,5 @@
 <?php
-   //session start
+//session start
 session_start();
 // Check if the user is not logged in, redirect to login page
 if (!isset($_SESSION['role'])) {
@@ -27,9 +27,12 @@ if (!isset($_SESSION['role'])) {
                 <li><a href="../php/logout.php">LOGOUT</a></li>
             </ul>
 	</header>
+
+    
+
     <footer>
         <center>
-        <p>&copy; Copyright Barrio Liwanag. All Rights Reserved 2024</p>
+            <p>&copy; Copyright Barrio Liwanag. All Rights Reserved 2024</p>
         </center>
     </footer>
 </body>
