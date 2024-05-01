@@ -18,7 +18,7 @@
 
  <!-- Set variables here -->
  <?php
-    $_SESSION['eventid'] = "5";
+    $_SESSION['eventid'] = "6";                                                                             //temporary 
     $queryname = $_SESSION['eventid'];
     // Using prepared statement to prevent SQL injection
     $sql = "SELECT * FROM events WHERE id = ?";
@@ -43,6 +43,7 @@
             $eventname = $row['eventname'];                                                                 //CHANGE THESE VARIABLES
             $eventdate = $row['start_date'];
             $eventdesc = $row['description'];
+            $event_enddate = $row['end_date'];
         }
         // Free the result set
         mysqli_free_result($result);
@@ -80,9 +81,17 @@
             <!-- Left Container -->
             <div class="container-left">
                 <strong style="font-size: 40px;"><?php echo $eventname; ?></strong> <!--Event Name -->
-                <h4> <?php echo $eventdate?></h4>
-                <p style="padding-right: 20px; text-align:justify;">
-                    <?php echo $eventdesc; ?>
+                <h4> 
+                    <?php 
+                    if( $eventdate == $event_enddate){  //for single day events
+                        echo $eventdate;
+                    }else{                              //for multiple day events
+                        echo $eventdate." - " . $event_enddate ;
+                    }
+                    ?>
+                </h4>
+                <p style="padding-right: 20px; text-align:justify;"> 
+                    <?php echo $eventdesc; ?>           
                 </p>
                            
 

@@ -116,9 +116,11 @@ $result = mysqli_query($conn, $sql);
 
                     echo '<div class="event-images" id="images-' . $row['id'] . '">';
                     for ($i = 1; $i <= 4; $i++) {
+                        if(!empty($row['event_images_' . $i])){
                         $image_data = base64_encode($row['event_images_' . $i]);
                         $image_src = 'data:image/jpeg;base64,' . $image_data; 
                         echo '<img class="event-image" src="' . $image_src . '">';
+                        }
                     }
                     echo '</div>';
                     echo '</button>';

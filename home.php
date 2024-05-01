@@ -36,7 +36,7 @@ if (!isset($_SESSION['role'])) {
 
                 $number_of_seconds = $end_timestamp - $start_timestamp;
                 $number_of_days = round($number_of_seconds / (60 * 60 * 24));
-
+                $number_of_days++; 
                 $eventdate = $row['start_date'];
                 $calendar->add_event($eventname, $eventdate, $number_of_days, 'green');
             }
