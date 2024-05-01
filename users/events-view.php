@@ -18,7 +18,8 @@
 
  <!-- Set variables here -->
  <?php
-    $_SESSION['eventid'] = "6";                                                                             //temporary 
+    
+    $_SESSION['eventid'] = $_GET['eventid'];                                                                             //temporary 
     $queryname = $_SESSION['eventid'];
     // Using prepared statement to prevent SQL injection
     $sql = "SELECT * FROM events WHERE id = ?";
@@ -100,7 +101,7 @@
             <div class="container-right">
                 <img src="../images/cover-pic-fb.jpg" alt="Barrio Liwanag Cover" width="100%">
                 <center>
-                    <strong style="font-size: 20px;"><h1>QR Code</h1></strong>
+                    <strong style="font-size: 20px;"><h1>Image Gallery</h1></strong>
                 </center>
             </div>
         </div>

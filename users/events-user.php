@@ -108,6 +108,8 @@ $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<button class="event-list" onclick="toggleEventDetails(' . $row['id'] . ')">';
                     echo '<div class="event-details" id="event-details-' . $row['id'] . '">';
+                    $eventurl = "events-view.php?eventid=" . $row['id']; // Read more code
+                    echo "<a href='$eventurl'>Read More</a>";            // remove if not needed or put at the bottom when ui is fixed 
                     echo '<h2>' . $row['eventname'] . '</h2>';
                     echo '<h4>' . $row['description'] . '</h4>';
                     echo '<p>Start Date: ' . $row['start_date'] . '</p>';
