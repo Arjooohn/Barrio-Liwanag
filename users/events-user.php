@@ -36,7 +36,7 @@ $result = mysqli_query($conn, $sql);
         </ul>
     </header>
 
-    <!-- CSS for Dropdown Button. Nagkakaconflict kasi sa ibang tags kaya
+    <!-- CSS for Dropdown Button (Filter Button). Nagkakaconflict kasi sa ibang tags kaya
     ginawa ko na lang dito sa loob ng events page. Minimize niyo na lang -->
     <style>
         .dropbtn {
@@ -83,6 +83,9 @@ $result = mysqli_query($conn, $sql);
             background-color: #EFBC9B;
             border-radius: 20px;
         }
+        .event-images {
+            display: none; /* Hide images by default */
+        }
     </style>
 
     <section class="parallax-events">
@@ -94,64 +97,57 @@ $result = mysqli_query($conn, $sql);
                 <div class="dropdown">
                     <button class="dropbtn">Filter Events! &nbsp; ▼</button>
                     <div class="dropdown-content">
-                    <a href="#">Ongoing Events</a>
-                    <a href="#">Upcoming Events</a>
-                    <a href="#">Closed Events</a>
+                        <a href="#">Ongoing Events</a>
+                        <a href="#">Upcoming Events</a>
+                        <a href="#">Closed Events</a>
                     </div>
                 </div>
 
                 <!-- INSERT COLUMN HERE FOR THE EVENT DETAILS. CHECK EVENTS PAGE SA FIGMA -->
-                <button class="event-list">
-                    <!-- <div> -->
-                        <img class="event-image" src="../images/logo.png" alt="Event Image">
-                    <!-- </div> -->
-                    <div class="event-text">
-                        <h2>Event Name</h2>
-                        <h4>Event Description</h4>
-                    </div>
-                </button>
-                <!-- Another Event Sample  -->
-                <!-- <div class="event-list">
-                    <div class="event-image">
-                        <img src="../images/logo.png" alt="Event Image">
-                    </div>
-                    <div class="event-text">
-                        <h2>Event Name 1</h2>
-                        <h4>Event Description 1</h4>
-                    </div>
-                </div> -->
+                <?php
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<button class="event-list" onclick="toggleEventDetails(' . $row['id'] . ')">';
+                    echo '<div class="event-details" id="event-details-' . $row['id'] . '">';
+                    echo '<h2>' . $row['eventname'] . '</h2>';
+                    echo '<h4>' . $row['description'] . '</h4>';
+                    echo '<p>Start Date: ' . $row['start_date'] . '</p>';
+                    echo '<p>End Date: ' . $row['end_date'] . '</p>';
+                    echo '</div>';
+
+                    echo '<div class="event-images" id="images-' . $row['id'] . '">';
+                    for ($i = 1; $i <= 4; $i++) {
+                        $image_data = base64_encode($row['event_images_' . $i]);
+                        $image_src = 'data:image/jpeg;base64,' . $image_data; 
+                        echo '<img class="event-image" src="' . $image_src . '">';
+                    }
+                    echo '</div>';
+                    echo '</button>';
+                }
+                ?>
                 <br>
             </center>
-
         </div>
-    </section>
-
-
-    <section >
-        <center>
-            <div>
-                <!-- Display images -->
-                <div class="image-gallery">
-                    <?php
-                    // Loop through each event and display its image
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        // Output the image using base64 encoding
-                        // Adjust the column name according to your database structure
-                        $image_data = base64_encode($row['event_images_1']);
-                        $image_src = 'data:image/jpeg;base64,' . $image_data; 
-                        echo '<img src="' . $image_src . '" alt="Event Image">';
-                    }
-                    ?>
-                </div>
-            </div>
-        </center>
-
     </section>
 
     <footer>
         <center>
-        <p>&copy; Copyright Barrio Liwanag. All Rights Reserved 2024</p>
+            <p>&copy; Copyright Barrio Liwanag. All Rights Reserved 2024</p>
         </center>
     </footer>
+
+    <script>
+    function toggleEventDetails(eventId) {
+        var eventDetails = document.getElementById('event-details-' + eventId);
+        var eventImages = document.getElementById('images-' + eventId);
+        if (eventDetails.style.display === 'block') {
+            eventDetails.style.display = 'none';
+            eventImages.style.display = 'block';
+        } else {
+            eventDetails.style.display = 'block';
+            eventImages.style.display = 'none';
+        }
+    }
+</script>
+
 </body>
 </html>

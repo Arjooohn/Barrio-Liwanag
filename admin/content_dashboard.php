@@ -12,47 +12,60 @@ require_once "../config.php";
 
 // Process form submission to create events
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
-    $eventname = $_POST['eventname'];
-    $description = $_POST['description'];
-    $start_date = $_POST['start_date'];
-    $end_date = $_POST['end_date'];
-    
-    // Prepare and execute SQL statement to insert event details
-    $sql = "INSERT INTO events (eventname, description, start_date, end_date) VALUES (?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $eventname, $description, $start_date, $end_date);
-    $stmt->execute();
+    if (isset($_POST['delete_event'])) {
+        // Delete event
+        $event_id = $_POST['event_id'];
+        $sql = "DELETE FROM events WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $event_id);
+        $stmt->execute();
+        $stmt->close();
+        // Redirect back to the content dashboard or any other page
+        header("Location: content_dashboard.php");
+        exit();
+    } else {
+        // Retrieve form data
+        $eventname = isset($_POST['eventname']) ? $_POST['eventname'] : null;
+        $description = isset($_POST['description']) ? $_POST['description'] : null;
+        $start_date = isset($_POST['start_date']) ? $_POST['start_date'] : null;
+        $end_date = isset($_POST['end_date']) ? $_POST['end_date'] : null;
 
-    // Get the ID of the inserted event
-    $event_id = $stmt->insert_id;
+        // Prepare and execute SQL statement to insert event details
+        $sql = "INSERT INTO events (eventname, description, start_date, end_date) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $eventname, $description, $start_date, $end_date);
+        $stmt->execute();
 
-    // Close the statement
-    $stmt->close();
+        // Get the ID of the inserted event
+        $event_id = $stmt->insert_id;
 
-    // Process image uploads and store them in the database
-    for ($i = 1; $i <= 4; $i++) {
-        // Check if an image was uploaded for the current field
-        if ($_FILES['image'.$i]['size'] > 0) {
-            // Get the image data
-            $image_tmp = $_FILES['image'.$i]['tmp_name'];
-            $image_data = file_get_contents($image_tmp);
+        // Close the statement
+        $stmt->close();
 
-            // Prepare and execute SQL statement to update the event image
-            $sql = "UPDATE events SET event_images_$i = ? WHERE id = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("bi", $image_data, $event_id);
-            $stmt->send_long_data(0, $image_data);
-            $stmt->execute();
+        // Process image uploads and store them in the database
+        for ($i = 1; $i <= 4; $i++) {
+            // Check if an image was uploaded for the current field
+            if ($_FILES['image'.$i]['size'] > 0) {
+                // Get the image data
+                $image_tmp = $_FILES['image'.$i]['tmp_name'];
+                $image_data = file_get_contents($image_tmp);
 
-            // Close the statement
-            $stmt->close();
+                // Prepare and execute SQL statement to update the event image
+                $sql = "UPDATE events SET event_images_$i = ? WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("bi", $image_data, $event_id);
+                $stmt->send_long_data(0, $image_data);
+                $stmt->execute();
+
+                // Close the statement
+                $stmt->close();
+            }
         }
-    }
 
-    // Redirect back to the content dashboard or any other page
-    header("Location: content_dashboard.php");
-    exit();
+        // Redirect back to the content dashboard or any other page
+        header("Location: content_dashboard.php");
+        exit();
+    }
 }
 ?>
 
@@ -113,6 +126,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
     </section>
+
+    <section>
+        <!-- Display existing events with delete buttons -->
+        <div class="event-list">
+            <?php
+            // Retrieve existing events from the database
+            $sql = "SELECT * FROM events";
+            $result = $conn->query($sql);
+
+            // Display each event with a delete button
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="event">';
+                echo '<h2>' . $row['eventname'] . '</h2>';
+                echo '<h4>' . $row['description'] . '</h4>';
+                echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+                echo '<input type="hidden" name="event_id" value="' . $row['id'] . '">';
+                echo '<input type="submit" name="delete_event" value="Delete">';
+                echo '</form>';
+                echo '</div>';
+            }
+            ?>
+        </div>
+    </section>
+
 
     <footer>
         <center>
