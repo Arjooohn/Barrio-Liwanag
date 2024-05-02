@@ -89,13 +89,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </ul>
     </header>
 
+    <!-- Creating Events Section -->
     <section>
-        <div class="page-title">
-            <p>EVENTS HANDLING</p>
-        </div>
-        
         <!-- Form to create events -->
-        <div class="event-form">
+        <div class="event-form page-title" style="font-size: small;">
+            <div style="font-size: xx-large;">
+                <p><strong><b>Creating Events</b></strong></p>
+            </div>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
                 <label for="eventname">Event Name:</label>
                 <input type="text" id="eventname" name="eventname" required><br><br>
@@ -122,14 +122,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="image4">Event Image 4:</label>
                 <input type="file" id="image4" name="image4"><br><br>
                 
-                <input type="submit" value="Create Event">
+                <input type="submit" value="Create Event" class="create-btn">
             </form>
         </div>
     </section>
 
+    <!-- Delete Section -->
     <section>
         <!-- Display existing events with delete buttons -->
-        <div class="event-list">
+        <div class="event-list page-title event-form" style="font-size: small;">
+            <div style="font-size: xx-large;">
+                <p><strong><b>Deleting Events</b></strong></p>
+            </div>
             <?php
             // Retrieve existing events from the database
             $sql = "SELECT * FROM events";
@@ -142,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<h4>' . $row['description'] . '</h4>';
                 echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
                 echo '<input type="hidden" name="event_id" value="' . $row['id'] . '">';
-                echo '<input type="submit" name="delete_event" value="Delete">';
+                echo '<input type="submit" name="delete_event" value="Delete" class="delete-btn">';
                 echo '</form>';
                 echo '</div>';
             }

@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="../admin-css/logs.css">
-<link href="../images/logo.png" rel="icon">
+<link href="../images/admin-logo.jpg" rel="icon">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
