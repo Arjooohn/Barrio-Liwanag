@@ -58,8 +58,6 @@
     }
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="../css/mainstyle.css">
@@ -125,14 +123,11 @@
                 <p style="padding-right: 20px; text-align:justify;"> 
                     <?php echo $eventdesc; ?>           
                 </p>
-                           
-
             </div>
             <!-- Right Container -->
             <div class="container-right">
                 <!-- Carousel -->
                 <div id="demo" class="carousel slide" data-bs-ride="carousel">
-
                       <!-- The slideshow/carousel -->
                     <div class="carousel-inner">
                         <?php
@@ -181,8 +176,6 @@
                     <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </button>
-                    
-
                 </div>
             </div>
         </div>
