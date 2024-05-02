@@ -64,30 +64,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <?php echo $eventname; ?></title>
-<!-- carousel code -->
+    <!-- bootstrap carousel -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-body {font-family:Arial, Helvetica, sans-serif; font-size:12px;}
- 
-.fadein { 
-position:relative; height:332px; width:500px; margin:0 auto;
-background: #ebebeb;
-padding: 10px;
- }
-.fadein img{
-	position:absolute;
-	width: calc(96%);
-    height: calc(94%);
-    object-fit: scale-down;
-}
-</style>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script>
-$(function(){
-	$('.fadein img:gt(0)').hide();
-	setInterval(function(){$('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');}, 3000);
-});
-</script>
-<!-- -->
+    .d-block:hover{
+    color: #424242; 
+        -webkit-transition: all .3s ease-in;
+        -moz-transition: all .3s ease-in;
+        -ms-transition: all .3s ease-in;
+        -o-transition: all .3s ease-in;
+        transition: all .3s ease-in;
+        opacity: 1;
+        transform: scale(1.15);
+        -ms-transform: scale(1.15); /* IE 9 */
+        -webkit-transform: scale(1.15); /* Safari and Chrome */
+
+    }
+    .carousel-control-prev-icon { /*carousel buttons color, change fill='%23fff' fffwith hex */ 
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666666' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+    }
+    .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666666' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+    }
+    </style>
 
 </head>
 <body>
@@ -125,35 +125,59 @@ $(function(){
             </div>
             <!-- Right Container -->
             <div class="container-right">
-                <!-- <img src="../images/cover-pic-fb.jpg" alt="Barrio Liwanag Cover" width="100%"> -->
                 <!-- Carousel -->
-                <div class="fadein">
-                    <?php
-                    // Using prepared statement to prevent SQL injection
-                    $sql = "SELECT * FROM events WHERE id = ?";
-                    
-                    // Prepare the SQL statement
-                    $stmt = $conn->prepare($sql);
-                    
-                    // Bind the parameter to the prepared statement
-                    $stmt->bind_param("s", $queryname);
-                    
-                    // Execute the prepared statement
-                    $stmt->execute();
-                    
-                    // Get the result
-                    $result = $stmt->get_result();
-                    while ($row = mysqli_fetch_assoc($result)) {
+                <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+                      <!-- The slideshow/carousel -->
+                    <div class="carousel-inner">
+                        <?php
+                        // Using prepared statement to prevent SQL injection
+                        $sql = "SELECT * FROM events WHERE id = ?";
                         
-                    for ($i = 1; $i <= 4; $i++) {
-                            if(!empty($row['event_images_' . $i])){
-                            $image_data = base64_encode($row['event_images_' . $i]);
-                            $image_src = 'data:image/jpeg;base64,' . $image_data; 
-                            echo '<img class="event-image" src="' . $image_src . '">';
+                        // Prepare the SQL statement
+                        $stmt = $conn->prepare($sql);
+                        
+                        // Bind the parameter to the prepared statement
+                        $stmt->bind_param("s", $queryname);
+                        
+                        // Execute the prepared statement
+                        $stmt->execute();
+                        
+                        // Get the result
+                        $result = $stmt->get_result();
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        $imagecount = 0;
+                        for ($i = 1; $i <= 4; $i++) {
+                                if(!empty($row['event_images_' . $i])){
+                                    $imagecount++;
+                                    $image_data = base64_encode($row['event_images_' . $i]);
+                                    $image_src = 'data:image/jpeg;base64,' . $image_data; 
+                                    if($imagecount == 1){ //set the first image found active
+                                        echo '<div class="carousel-item active">
+                                            <img class="d-block" style="width:100%" src="' . $image_src . '">
+                                            </div>';
+                                    }else{
+                                        echo '<div class="carousel-item">
+                                            <img class="d-block" style="width:100%" src="' . $image_src . '">
+                                            </div>';
+                                    }
+                                }
                             }
                         }
-                    }
-                    ?>
+                        if( $imagecount== 0){ //incase 0 images were uploaded, default
+                            echo '<img src="../images/cover-pic-fb.jpg" alt="Barrio Liwanag Cover" width="100%">';
+                        }
+                        ?>
+                    </div>
+                     <!-- Left and right controls/icons -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                    
+
                 </div>
             </div>
         </div>
