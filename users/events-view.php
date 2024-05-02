@@ -20,10 +20,14 @@
  <?php
     
     $_SESSION['eventid'] = $_GET['eventid'];                                                                             //temporary 
+    if (empty($_SESSION['eventid'] )){
+        header('Location: events-user.php');
+        die();
+    }
     $queryname = $_SESSION['eventid'];
     // Using prepared statement to prevent SQL injection
     $sql = "SELECT * FROM events WHERE id = ?";
-    
+
     // Prepare the SQL statement
     $stmt = $conn->prepare($sql);
     
@@ -68,6 +72,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
+
     .d-block:hover{
     color: #424242; 
         -webkit-transition: all .3s ease-in;
@@ -153,11 +158,11 @@
                                     $image_data = base64_encode($row['event_images_' . $i]);
                                     $image_src = 'data:image/jpeg;base64,' . $image_data; 
                                     if($imagecount == 1){ //set the first image found active
-                                        echo '<div class="carousel-item active">
+                                        echo '<div class="carousel-item active"  style = "height:400px;">
                                             <img class="d-block" style="width:100%" src="' . $image_src . '">
                                             </div>';
                                     }else{
-                                        echo '<div class="carousel-item">
+                                        echo '<div class="carousel-item"  style = "height:400px;">
                                             <img class="d-block" style="width:100%" src="' . $image_src . '">
                                             </div>';
                                     }
