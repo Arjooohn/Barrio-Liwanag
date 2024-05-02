@@ -54,6 +54,8 @@
     }
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="../css/mainstyle.css">
@@ -62,6 +64,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <?php echo $eventname; ?></title>
+<!-- carousel code -->
+    <style>
+body {font-family:Arial, Helvetica, sans-serif; font-size:12px;}
+ 
+.fadein { 
+position:relative; height:332px; width:500px; margin:0 auto;
+background: #ebebeb;
+padding: 10px;
+ }
+.fadein img{
+	position:absolute;
+	width: calc(96%);
+    height: calc(94%);
+    object-fit: scale-down;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+$(function(){
+	$('.fadein img:gt(0)').hide();
+	setInterval(function(){$('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');}, 3000);
+});
+</script>
+<!-- -->
 
 </head>
 <body>
@@ -99,10 +125,36 @@
             </div>
             <!-- Right Container -->
             <div class="container-right">
-                <img src="../images/cover-pic-fb.jpg" alt="Barrio Liwanag Cover" width="100%">
-                <center>
-                    <strong style="font-size: 20px;"><h1>Image Gallery</h1></strong>
-                </center>
+                <!-- <img src="../images/cover-pic-fb.jpg" alt="Barrio Liwanag Cover" width="100%"> -->
+                <!-- Carousel -->
+                <div class="fadein">
+                    <?php
+                    // Using prepared statement to prevent SQL injection
+                    $sql = "SELECT * FROM events WHERE id = ?";
+                    
+                    // Prepare the SQL statement
+                    $stmt = $conn->prepare($sql);
+                    
+                    // Bind the parameter to the prepared statement
+                    $stmt->bind_param("s", $queryname);
+                    
+                    // Execute the prepared statement
+                    $stmt->execute();
+                    
+                    // Get the result
+                    $result = $stmt->get_result();
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        
+                    for ($i = 1; $i <= 4; $i++) {
+                            if(!empty($row['event_images_' . $i])){
+                            $image_data = base64_encode($row['event_images_' . $i]);
+                            $image_src = 'data:image/jpeg;base64,' . $image_data; 
+                            echo '<img class="event-image" src="' . $image_src . '">';
+                            }
+                        }
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </section>
