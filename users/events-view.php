@@ -60,7 +60,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="../css/mainstyle.css">
+
 <link href="../images/logo.png" rel="icon">
 <head>
     <meta charset="UTF-8">
@@ -70,7 +70,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-
     .d-block:hover{
     color: #424242; 
         -webkit-transition: all .3s ease-in;
@@ -91,6 +90,7 @@
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666666' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
     }
     </style>
+    <link rel="stylesheet" href="../css/mainstyle.css">
 
 </head>
 <body>
@@ -153,11 +153,11 @@
                                     $image_data = base64_encode($row['event_images_' . $i]);
                                     $image_src = 'data:image/jpeg;base64,' . $image_data; 
                                     if($imagecount == 1){ //set the first image found active
-                                        echo '<div class="carousel-item active"  style = "height:400px;">
+                                        echo '<div class="carousel-item active"  style = "height:360px;">
                                             <img class="d-block" style="width:100%" src="' . $image_src . '">
                                             </div>';
                                     }else{
-                                        echo '<div class="carousel-item"  style = "height:400px;">
+                                        echo '<div class="carousel-item"  style = "height:360px;">
                                             <img class="d-block" style="width:100%" src="' . $image_src . '">
                                             </div>';
                                     }
