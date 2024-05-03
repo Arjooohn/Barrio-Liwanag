@@ -252,7 +252,7 @@
     <section>
         <!-- Go back button -->
         <a href="javascript:history.back()" class="btn btn-secondary">Go back</a>
-        <div class="container">          
+        <div class="eventcontainer">          
             <!-- Left Container -->
             <div class="eventcontainer-left">
                 <strong style="font-size: 40px;"><?php echo $eventname; ?></strong> <!--Event Name -->
@@ -327,24 +327,26 @@
                             </div>";
                         }
                         //next and previous
+                        if($imagecount >1){
                         echo'
-                          
                           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                           <a class="next" onclick="plusSlides(1)">&#10095;</a>
                         </div>
-                        '
-
+                        ';
+                        }
                         //End of Lightbox
                         ?>
                         
                     </div>
                      <!-- Left and right controls/icons for carousel-->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                     <?php if($imagecount >1){
+                    echo '<button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon"></span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
                         <span class="carousel-control-next-icon"></span>
-                    </button>
+                    </button>';
+                    }?>
                 </div>
                 
             </div>
