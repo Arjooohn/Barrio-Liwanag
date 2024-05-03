@@ -93,15 +93,45 @@ $result = mysqli_query($conn, $sql);
             <center>
                 <br>
                 <?php
+                //code to summarize string
+                function truncate_string ($string, $maxlength, $extension) {
+    
+                    // Set the replacement for the "string break" in the wordwrap function
+                    $cutmarker = "**cut_here**";
+                
+                    // Checking if the given string is longer than $maxlength
+                    if (strlen($string) > $maxlength) {
+                
+                        // Using wordwrap() to set the cutmarker
+                        // NOTE: wordwrap (PHP 4 >= 4.0.2, PHP 5)
+                        $string = wordwrap($string, $maxlength, $cutmarker);
+                
+                        // Exploding the string at the cutmarker, set by wordwrap()
+                        $string = explode($cutmarker, $string);
+                
+                        // Adding $extension to the first value of the array $string, returned by explode()
+                        $string = $string[0] . $extension;
+                    }
+                
+                    // returning $string
+                    return $string;
+                
+                }
+
+
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<button class="event-list" onclick="toggleEventDetails(' . $row['id'] . ')">';
                     echo '<div class="event-details" id="event-details-' . $row['id'] . '">';
                     $eventurl = "events-view.php?eventid=" . $row['id']; // Read more code
                     echo '<strong><b><h1>' . $row['eventname'] . '</strong></b></h1>';
-                    echo '<h4>' . $row['description'] . '</h4>';
-                    echo '<a href="' . $eventurl . '" class="read-more-link">Read More about this event. Click here!</a>'; // remove if not needed or put at the bottom when ui is fixed 
-                    echo '<p>Start Date: ' . $row['start_date'] . '</p>';
-                    echo '<p>End Date: ' . $row['end_date'] . '</p>';
+                    if($row['start_date'] ==$row['end_date']){  //for single day events
+                        echo '<p>' . $row['start_date'] . '</p>';
+                    }else{                              //for multiple day events
+                        echo '<p>' . $row['start_date'] . ' - '. $row['end_date'] . '</p>';
+                    }
+                    //echo '<h4>' . $row['description'] . '</h4>';        
+                    echo '<h4>' . truncate_string($row['description'], 200, ' ... ') . // change summary length here 
+                    '<a href="' . $eventurl . '" class="read-more-link"><b>Read More</b></a></h4>'; 
                     echo '</div>';
                     echo '<div class="event-images" id="images-' . $row['id'] . '">';
                     for ($i = 1; $i <= 4; $i++) {
@@ -113,6 +143,8 @@ $result = mysqli_query($conn, $sql);
                     }
                     echo '</div>';
                     echo '</button>';
+
+                    
                 }
                 ?>
                 <br>
