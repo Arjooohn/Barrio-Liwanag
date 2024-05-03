@@ -30,8 +30,8 @@ $result = mysqli_query($conn, $sql);
         <ul class="main-nav">
             <li><a href="../home.php">Home</a></li>
             <li><a href="events-user.php">Events</a></li>
-            <li><a href="contact-us.php">Contact Us</a></li>
-            <li><a href="about-us.php">About Us</a></li>
+            <li><a href="../home.php#contact_us">Contact Us</a></li>
+            <li><a href="../home.php#about_us">About Us</a></li>
             <li><a href="../php/logout.php">Logout</a></li>
         </ul>
     </header>
