@@ -93,9 +93,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Update Event Section -->
     <section>
-        <div class="go-back-btn">
+        <center>
+        <div class="go-back-btn" style="margin-left: 50px;">
             <a href="content_dashboard.php">Go Back</a>
         </div>
+        <!-- Notification Section -->
+        <?php if(isset($notification)) { ?>
+            <div class="notification">
+                <?php echo $notification; ?>
+            </div>
+        <?php } ?>
+        </center>
         <!-- Form to update event -->
         <div class="event-form page-title" style="font-size: small;">
             <div style="font-size: xx-large;">
@@ -119,18 +127,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="image<?php echo $i; ?>">Event Image <?php echo $i; ?>:</label>
                     <input type="file" id="image<?php echo $i; ?>" name="image<?php echo $i; ?>"><br><br>
                 <?php } ?>
-                
                 <input type="submit" value="Update Event" class="create-btn">
             </form>
         </div>
     </section>
-
-    <!-- Notification Section -->
-    <?php if(isset($notification)) { ?>
-        <div class="notification">
-            <?php echo $notification; ?>
-        </div>
-    <?php } ?>
 
     <footer>
         <center>
