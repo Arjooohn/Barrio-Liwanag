@@ -94,14 +94,14 @@ $result = mysqli_query($conn, $sql);
                 <!-- IF ICCLICK NI USER YUNG ISANG EVENT, DAPAT MAPUNTA SIYA SA INDIVIDUAL EVENT DETAIL NA PAGE (SEE FIGMA) -->
                 <br>
                 <!-- Add the dropdown button here -->
-                <div class="dropdown">
+                <!-- <div class="dropdown">
                     <button class="dropbtn">Filter Events! &nbsp; ▼</button>
                     <div class="dropdown-content">
                         <a href="#">Ongoing Events</a>
                         <a href="#">Upcoming Events</a>
                         <a href="#">Closed Events</a>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- INSERT COLUMN HERE FOR THE EVENT DETAILS. CHECK EVENTS PAGE SA FIGMA -->
                 <?php

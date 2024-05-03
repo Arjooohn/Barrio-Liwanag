@@ -43,7 +43,6 @@ if (!isset($_SESSION['role'])) {
                     Pellentesque sed consectetur urna, id consectetur elit. Donec placerat elit nec lobortis fringilla. Morbi
                 </p>
             </center>
-            
         </div>
     </section>
 
