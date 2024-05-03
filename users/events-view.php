@@ -102,7 +102,9 @@
 	</header> 
     
     <section>
-        <div class="container">
+        <!-- Go back button -->
+        <a href="javascript:history.back()" class="btn btn-secondary">Go back</a>
+        <div class="container">          
             <!-- Left Container -->
             <div class="container-left">
                 <strong style="font-size: 40px;"><?php echo $eventname; ?></strong> <!--Event Name -->

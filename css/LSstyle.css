@@ -12,6 +12,20 @@ body {
     align-items: center;
     justify-content: center;
     background-color: #EFBC9B;
+    animation: bgcolor infinite 30s;
+}
+
+@keyframes bgcolor {
+  0%{
+      background: #EFBC9B
+      ;
+  }
+  50%{
+      background: #EDB437;
+  }
+  100%{
+    background: #B7BE9E;
+  }
 }
 
 h2 {
