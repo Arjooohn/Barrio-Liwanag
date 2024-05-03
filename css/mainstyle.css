@@ -179,6 +179,9 @@ a {
 	width:100px;
 	float: left;
 }
+.read-more-link:hover {
+    text-decoration: underline;
+}
 
 .event-text {
     width: 60%;

@@ -61,101 +61,90 @@ if (!isset($_SESSION['role'])) {
 
 </head>
 <body>
-    <!-- <header class="header">
-		<h1 class="logo"><a href="#"><img src="images/logo-with-text.png" alt="barrio-liwanag-logo-with-text" width="200" height="75"></a></h1>
-            <ul class="main-nav">
-                <li><a href="home.php">Home</a></li>
-                <li><a href="users/events-user.php">Events</a></li>
-                <li><a href="home.php#contact_us">Contact Us</a></li>
-                <li><a href="home.php#about_us">About Us</a></li>
-                <li><a href="php/logout.php">Logout</a></li>
-            </ul>
-	</header>  -->
     <!-- Navigation Bar -->
-<!-- Navigation Bar -->
-<header class="header">
-    <h1 class="logo"><a href="#"><img src="images/logo-with-text.png" alt="barrio-liwanag-logo-with-text" width="200" height="75"></a></h1>
-    <!-- Hamburger Menu Button -->
-    <button class="hamburger-menu" onclick="toggleMenu()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path fill="none" d="M0 0h24v24H0V0z"/>
-            <path d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"/>
-        </svg>
-    </button>
-    <!-- Regular Navigation Menu Items -->
-    <ul class="main-nav" id="main-nav">
-        <li><a href="home.php">Home</a></li>
-        <li><a href="users/events-user.php">Events</a></li>
-        <li><a href="home.php#contact_us">Contact Us</a></li>
-        <li><a href="home.php#about_us">About Us</a></li>
-        <li><a href="php/logout.php">Logout</a></li>
-    </ul>
-</header>
+    <header class="header">
+        <h1 class="logo"><a href="#"><img src="images/logo-with-text.png" alt="barrio-liwanag-logo-with-text" width="200" height="75"></a></h1>
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger-menu" onclick="toggleMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="none" d="M0 0h24v24H0V0z"/>
+                <path d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"/>
+            </svg>
+        </button>
+        <!-- Regular Navigation Menu Items -->
+        <ul class="main-nav" id="main-nav">
+            <li><a href="home.php">Home</a></li>
+            <li><a href="users/events-user.php">Events</a></li>
+            <li><a href="home.php#contact_us">Contact Us</a></li>
+            <li><a href="home.php#about_us">About Us</a></li>
+            <li><a href="php/logout.php">Logout</a></li>
+        </ul>
+    </header>
 
-<script>
-    // Function to toggle visibility of navigation menu items
-    function toggleMenu() {
-        var menu = document.getElementById('main-nav');
-        if (menu.style.display === 'block') {
-            menu.style.display = 'none';
-        } else {
-            menu.style.display = 'block';
-        }
-    }
-
-    // Function to handle window resize event
-    window.addEventListener('resize', function() {
-        var menu = document.getElementById('main-nav');
-        if (window.innerWidth >= 769) {
-            menu.style.display = 'flex';
-        }
-    });
-</script>
-
-<!-- CSS for positioning the header and the hamburger menu button -->
-<style>
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px; 
-        background-color: #B7BE9E; 
-    }
-
-    .hamburger-menu {
-        display: block;
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
-
-    @media (min-width: 769px) {
-        .hamburger-menu {
-            display: none;
+    <script>
+        // Function to toggle visibility of navigation menu items
+        function toggleMenu() {
+            var menu = document.getElementById('main-nav');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
         }
 
-        .main-nav {
+        // Function to handle window resize event
+        window.addEventListener('resize', function() {
+            var menu = document.getElementById('main-nav');
+            if (window.innerWidth >= 769) {
+                menu.style.display = 'flex';
+            }
+        });
+    </script>
+
+    <!-- CSS for positioning the header and the hamburger menu button -->
+    <style>
+        .header {
             display: flex;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .main-nav {
-            display: none;
-            position: absolute;
-            top: 60px; 
-            right: 20px; 
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px; 
             background-color: #B7BE9E; 
-            border: 1px solid #e9ecef; 
-            padding: 10px; 
-            border-radius: 5px;
         }
 
-        .main-nav li {
-            margin-bottom: 10px; 
+        .hamburger-menu {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
         }
-    }
-</style>
+
+        @media (min-width: 769px) {
+            .hamburger-menu {
+                display: none;
+            }
+
+            .main-nav {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                position: absolute;
+                top: 60px; 
+                right: 20px; 
+                background-color: #B7BE9E; 
+                border: 1px solid #e9ecef; 
+                padding: 10px; 
+                border-radius: 5px;
+            }
+
+            .main-nav li {
+                margin-bottom: 10px; 
+            }
+        }
+    </style>
 
     <section class="parallax">
         <div class="notification">

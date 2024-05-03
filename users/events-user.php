@@ -91,31 +91,18 @@ $result = mysqli_query($conn, $sql);
     <section class="parallax-events">
         <div>
             <center>
-                <!-- IF ICCLICK NI USER YUNG ISANG EVENT, DAPAT MAPUNTA SIYA SA INDIVIDUAL EVENT DETAIL NA PAGE (SEE FIGMA) -->
                 <br>
-                <!-- Add the dropdown button here -->
-                <!-- <div class="dropdown">
-                    <button class="dropbtn">Filter Events! &nbsp; ▼</button>
-                    <div class="dropdown-content">
-                        <a href="#">Ongoing Events</a>
-                        <a href="#">Upcoming Events</a>
-                        <a href="#">Closed Events</a>
-                    </div>
-                </div> -->
-
-                <!-- INSERT COLUMN HERE FOR THE EVENT DETAILS. CHECK EVENTS PAGE SA FIGMA -->
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<button class="event-list" onclick="toggleEventDetails(' . $row['id'] . ')">';
                     echo '<div class="event-details" id="event-details-' . $row['id'] . '">';
                     $eventurl = "events-view.php?eventid=" . $row['id']; // Read more code
-                    echo "<a href='$eventurl'>Read More</a>";            // remove if not needed or put at the bottom when ui is fixed 
-                    echo '<h2>' . $row['eventname'] . '</h2>';
+                    echo '<strong><b><h1>' . $row['eventname'] . '</strong></b></h1>';
                     echo '<h4>' . $row['description'] . '</h4>';
+                    echo '<a href="' . $eventurl . '" class="read-more-link">Read More about this event. Click here!</a>'; // remove if not needed or put at the bottom when ui is fixed 
                     echo '<p>Start Date: ' . $row['start_date'] . '</p>';
                     echo '<p>End Date: ' . $row['end_date'] . '</p>';
                     echo '</div>';
-
                     echo '<div class="event-images" id="images-' . $row['id'] . '">';
                     for ($i = 1; $i <= 4; $i++) {
                         if(!empty($row['event_images_' . $i])){
