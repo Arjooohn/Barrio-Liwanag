@@ -149,3 +149,46 @@ header{
     }
 }
 
+
+/* Targeting all input elements within the section */
+section input[type="text"], section input[type="date"] {
+    padding: 8px;
+    font-size: 16px;
+    max-width: 300px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* For the description textarea */
+section textarea {
+    padding: 8px;
+    font-size: 16px;
+    max-width: 300px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Allows users to resize vertically */
+}
+/* Targeting all file input elements within the section */
+section input[type="file"] {
+    padding: 8px;
+    font-size: 16px;
+    max-width: 300px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Adding a label for better accessibility */
+section input[type="file"] + label {
+    display: block;
+    margin-top: 5px;
+    cursor: pointer;
+    padding: 8px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
