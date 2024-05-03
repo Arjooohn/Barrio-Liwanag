@@ -98,68 +98,82 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Creating Events Section -->
     <section>
         <!-- Form to create events -->
-        <div class="event-form page-title" style="font-size: small;">
+        <div class="page-title" style="font-size: small;">
             <div style="font-size: xx-large;">
                 <p><strong><b>Creating Events</b></strong></p>
             </div>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
-                <label for="eventname">Event Name:</label>
-                <input type="text" id="eventname" name="eventname" required><br><br>
-                
-                <label for="description">Description:</label><br>
-                <textarea id="description" name="description" rows="4" cols="50"></textarea><br><br>
-                
-                <label for="start_date">Start Date:</label>
-                <input type="date" id="start_date" name="start_date" required><br><br>
-                
-                <label for="end_date">End Date:</label>
-                <input type="date" id="end_date" name="end_date" required><br><br>
-                
-                <!-- File input fields for uploading images -->
-                <label for="image1">Event Image 1:</label>
-                <input type="file" id="image1" name="image1"><br><br>
-                
-                <label for="image2">Event Image 2:</label>
-                <input type="file" id="image2" name="image2"><br><br>
-                
-                <label for="image3">Event Image 3:</label>
-                <input type="file" id="image3" name="image3"><br><br>
-                
-                <label for="image4">Event Image 4:</label>
-                <input type="file" id="image4" name="image4"><br><br>
-                
+                <div style="display: flex;">
+                    <!-- Left Column for Event Details -->
+                    <div style="flex: 1;">
+                        <label for="eventname">Event Name:</label>
+                        <input type="text" id="eventname" name="eventname" required><br><br>
+                        
+                        <label for="description">Description:</label><br>
+                        <textarea id="description" name="description" rows="4" cols="30"></textarea><br><br>
+                        
+                        <label for="start_date">Start Date:</label>
+                        <input type="date" id="start_date" name="start_date" required><br><br>
+                        
+                        <label for="end_date">End Date:</label>
+                        <input type="date" id="end_date" name="end_date" required><br><br>
+                    </div>
+                    <!-- Right Column for Image Uploads -->
+                    <div style="flex: 1;">
+                        <label for="image1">Event Image 1:</label>
+                        <input type="file" id="image1" name="image1"><br><br>
+                        
+                        <label for="image2">Event Image 2:</label>
+                        <input type="file" id="image2" name="image2"><br><br>
+                        
+                        <label for="image3">Event Image 3:</label>
+                        <input type="file" id="image3" name="image3"><br><br>
+                        
+                        <label for="image4">Event Image 4:</label>
+                        <input type="file" id="image4" name="image4"><br><br>
+                    </div>
+                </div>
                 <input type="submit" value="Create Event" class="create-btn">
             </form>
         </div>
     </section>
 
-    <!-- Delete and Update Section -->
-    <section>
-        <!-- Display existing events with delete and update buttons -->
-        <div class="event-list page-title event-form" style="font-size: small;">
-            <div style="font-size: xx-large;">
-                <p><strong><b>Managing Events</b></strong></p>
-            </div>
+
+<!-- Delete and Update Section -->
+<section>
+    <!-- Display existing events with delete and update buttons -->
+    <div class="event-list page-title event-form">
+        <div style="font-size: xx-large;">
+            <p><strong><b>Managing Events</b></strong></p>
+        </div>
+        <div class="events-container">
             <?php
             // Retrieve existing events from the database
             $sql = "SELECT * FROM events";
             $result = $conn->query($sql);
 
             // Display each event with delete and update buttons
-            while ($row = $result->fetch_assoc()) {
-                echo '<div class="event">';
-                echo '<h2>' . $row['eventname'] . '</h2>';
-                echo '<h4>' . $row['description'] . '</h4>';
-                echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
-                echo '<input type="hidden" name="event_id" value="' . $row['id'] . '">';
-                echo '<input type="submit" name="delete_event" value="Delete" class="delete-btn">';
-                echo '<input type="submit" name="update_event" value="Update" class="update-btn">';
-                echo '</form>';
-                echo '</div>';
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="event-card">';
+                    echo '<h2>' . $row['eventname'] . '</h2>';
+                    echo '<h4>' . $row['description'] . '</h4>';
+                    echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+                    echo '<input type="hidden" name="event_id" value="' . $row['id'] . '">';
+                    echo '<input type="submit" name="delete_event" value="Delete" class="delete-btn">';
+                    echo '<input type="submit" name="update_event" value="Update" class="update-btn">';
+                    echo '</form>';
+                    echo '</div>';
+                }
+            } else {
+                echo "<p>No events found.</p>";
             }
             ?>
         </div>
-    </section>
+    </div>
+</section>
+
+
 
     <footer>
         <center>

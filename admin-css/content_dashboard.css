@@ -85,10 +85,12 @@ header{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 10px;
 }
 
 .update-btn {
     background-color: #4287f5;
+    margin: 10px;
     color: #ffffff;
     padding: 10px 20px;
     border: none;
@@ -96,3 +98,54 @@ header{
     cursor: pointer;
     margin-right: 10px;
 }
+
+/* CSS for Responsive Event Cards */
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center align when there is only one card */
+}
+
+.event-card {
+    margin: 10px;
+    flex: 1 0 calc(33.33% - 20px); /* Three cards in a row by default */
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.event-card h2,
+.event-card h4 {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+@media screen and (max-width: 768px) {
+    .event-card {
+        flex: 1 0 calc(50% - 20px); /* Two cards in a row for medium screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .event-card {
+        flex: 1 0 calc(100% - 20px); /* One card in a row for small screens */
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .events-container {
+        justify-content: flex-start; /* Align cards to the left for larger screens */
+    }
+
+    .event-card:nth-child(3n+1) {
+        margin-left: 0; /* Remove margin for the first card in each row */
+    }
+
+    .event-card:nth-child(3n+3) {
+        margin-right: 0; /* Remove margin for the last card in each row */
+    }
+}
+
