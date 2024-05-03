@@ -23,6 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Redirect back to the content dashboard or any other page
         header("Location: content_dashboard.php");
         exit();
+    } elseif (isset($_POST['update_event'])) {
+        // Redirect to the update event page with event ID as parameter
+        $event_id = $_POST['event_id'];
+        header("Location: update_event.php?event_id=$event_id");
+        exit();
     } else {
         // Retrieve form data
         $eventname = isset($_POST['eventname']) ? $_POST['eventname'] : null;
@@ -71,12 +76,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="../admin-css/content_dashboard.css">
-<link href="../images/admin-logo.jpg" rel="icon">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Content Dashboard</title>
+    <link rel="stylesheet" href="../admin-css/content_dashboard.css">
+    <link href="../images/admin-logo.jpg" rel="icon">
+
 </head>
 <body>
     <header class="header">
@@ -127,19 +133,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </section>
 
-    <!-- Delete Section -->
+    <!-- Delete and Update Section -->
     <section>
-        <!-- Display existing events with delete buttons -->
+        <!-- Display existing events with delete and update buttons -->
         <div class="event-list page-title event-form" style="font-size: small;">
             <div style="font-size: xx-large;">
-                <p><strong><b>Deleting Events</b></strong></p>
+                <p><strong><b>Managing Events</b></strong></p>
             </div>
             <?php
             // Retrieve existing events from the database
             $sql = "SELECT * FROM events";
             $result = $conn->query($sql);
 
-            // Display each event with a delete button
+            // Display each event with delete and update buttons
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="event">';
                 echo '<h2>' . $row['eventname'] . '</h2>';
@@ -147,6 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
                 echo '<input type="hidden" name="event_id" value="' . $row['id'] . '">';
                 echo '<input type="submit" name="delete_event" value="Delete" class="delete-btn">';
+                echo '<input type="submit" name="update_event" value="Update" class="update-btn">';
                 echo '</form>';
                 echo '</div>';
             }
@@ -154,10 +161,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </section>
 
-
     <footer>
         <center>
-            <p>&copy; Copyright Barrio Liwanag. All Rights Reserved 2024</p>
+            <p>&copy; Copyright Barrio Liwanag. All Rights Reserved 2024</p>
         </center>
     </footer>
 </body>
