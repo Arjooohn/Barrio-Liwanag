@@ -13,14 +13,32 @@ require_once "../config.php";
 // Process form submission to create events
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['delete_event'])) {
-        // Delete event
         $event_id = $_POST['event_id'];
-        $sql = "DELETE FROM events WHERE id = ?";
+        $sql = "SELECT eventname FROM events WHERE id =?";
         $stmt = $conn->prepare($sql);
+        if ($stmt === false) {
+            die("Error preparing statement: ". $conn->error);
+        }
         $stmt->bind_param("i", $event_id);
         $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $eventName = $row['eventname'];
+    
+        // Delete event
+        $sql = "DELETE FROM events WHERE id =?";
+        $stmt = $conn->prepare($sql);
+        if ($stmt === false) {
+            die("Error preparing statement: ". $conn->error);
+        }
+        $stmt->bind_param("i", $event_id);
+        $stmt->execute();
+    
+        // LOGGING EVENT
+        include 'logging.php';
+        logUserAction('EVENT delete', $_SESSION['id'], $_SESSION['username'], $event_id, $eventName);
+    
         $stmt->close();
-        // Redirect back to the content dashboard or any other page
         header("Location: content_dashboard.php");
         exit();
     } elseif (isset($_POST['update_event'])) {
@@ -43,6 +61,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Get the ID of the inserted event
         $event_id = $stmt->insert_id;
+
+        // After successfully creating a new event
+        include 'logging.php';
+        $newUserId = $conn->insert_id; // Get the ID of the newly created user
+        logUserAction('EVENT create', $_SESSION['id'], $_SESSION['username'], $newUserId, $eventname);
 
         // Close the statement
         $stmt->close();

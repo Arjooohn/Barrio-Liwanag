@@ -44,6 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssssi", $eventname, $description, $start_date, $end_date, $event_id);
     $stmt->execute();
+
+    // After successfully updating an event
+    include 'logging.php';
+    $newUserId = $conn->insert_id; // Get the ID of the newly created user
+    logUserAction('EVENT update', $_SESSION['id'], $_SESSION['username'], $event_id, $eventname);
+
     $stmt->close();
 
     // Process image uploads and update event images in the database

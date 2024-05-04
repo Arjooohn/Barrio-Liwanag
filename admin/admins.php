@@ -24,6 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $username, $hashed_password);
     $stmt->execute();
+
+    // After successfully creating a new user
+    include 'logging.php';
+    $newUserId = $conn->insert_id; // Get the ID of the newly created user
+    logUserAction('ACCOUNT create', $_SESSION['id'], $_SESSION['username'], $newUserId, $username);
+
     $stmt->close();
 
     // Redirect to another page after successful admin creation
