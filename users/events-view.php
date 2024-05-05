@@ -102,6 +102,7 @@
         box-shadow:  5px 5px 10px #B7BE9E,
                     -5px -5px 10px #B7BE9E;
         }
+
     }
 
     /*Lightbox */
@@ -281,7 +282,9 @@
                         ?>
                     </h4>
                     <p style="padding-right: 20px; text-align:justify;"> 
-                        <?php echo $eventdesc; ?>           
+                        <?php
+                         $eventdesc = nl2br($eventdesc); //show paragraphs
+                         echo $eventdesc; ?>           
                     </p>
                 </div>
 
@@ -319,8 +322,8 @@
                                             </div>';
                                         $image_src_lightbox[$imagecount] = $image_src;  
                                     }else{
-                                        echo '<div class="carousel-item"  style = "max-height:560px;">
-                                            <img class="d-block" onclick="openModal();currentSlide('.$i.')" style="width:100%;" src="' . $image_src . '">
+                                        echo '<div class="carousel-item"  style = "max-height:560px;  ">
+                                            <img class="d-block" onclick="openModal();currentSlide('.$i.')" style="width:100%;  " src="' . $image_src . '">
                                             </div>';
                                         $image_src_lightbox[$imagecount] = $image_src;  
                                     }
