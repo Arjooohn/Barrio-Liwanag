@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Event</title>
     <link rel="stylesheet" href="../admin-css/update_event.css">
-    <link href="../images/admin-logo.jpg" rel="icon">
+    <link href="../images/admin-logo-old.png" rel="icon">
 </head>
 <body>
     <header class="header">

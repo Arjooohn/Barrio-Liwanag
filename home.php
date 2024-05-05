@@ -288,13 +288,26 @@ if (!isset($_SESSION['role'])) {
     <!-- ABOUT US SECTION -->
     <section id="about_us">
             <div class="card">
-                <div class="card-image"> <img src="images/about-us-page.jpg" alt="Barrio Liwanag Cover"> </div>
-                <div class="category"> 𝐊𝐀𝐌𝐔𝐒𝐓𝐀? 𝐊𝐀-𝐁𝐀𝐑𝐑𝐈𝐎?!</div>
+                <div class="card-image"> <img src="images/barrio-liwanag-background-cover.png" alt="Barrio Liwanag Cover"> </div>
+                <div class="category">What is Barrio Liwanag?</div>
                 <div class="heading"> 
                     <div>
                         <p>
                             We are from 𝘽𝙖𝙧𝙧𝙞𝙤 𝙇𝙞𝙬𝙖𝙣𝙖𝙜, and our mission is to create and provide hope through  awareness and educate the public about issues that cause societal injustice. To also support through different groups that share our aims through raising funds. In the process, we hope to share our "liwanag" with those in need.
-                            Barrio Liwanag, was founded after discovering that our members shared similar views while reading each other's posts from other forums. Despite the fact that our themes differed, we understood via personal interactions that our core ideals were mostly about fairness and justice.
+                        </p>
+                        <div class="author"> This is <span class="name">Barrio Liwanag</div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image"> <img src="images/about-us-page.jpg" alt="Barrio Liwanag Cover"> </div>
+                <div class="category">When Did It All Start?</div>
+                <div class="heading"> 
+                    <div>
+                        <p>
+                            𝘽𝙖𝙧𝙧𝙞𝙤 𝙇𝙞𝙬𝙖𝙣𝙖𝙜, was founded after discovering that our members shared similar views while reading each other's posts from other forums. Despite the fact that our themes differed, we understood via personal interactions that our core ideals were mostly about fairness and justice.
                         </p>
                         <div class="author"> This is <span class="name">Barrio Liwanag</div>
                     </div>

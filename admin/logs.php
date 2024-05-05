@@ -21,7 +21,7 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Content Dashboard</title>
     <link rel="stylesheet" href="../admin-css/logs.css">
-    <link href="../images/admin-logo.jpg" rel="icon">
+    <link href="../images/admin-logo-old.png" rel="icon">
 </head>
 <body>
     <header class="header">
