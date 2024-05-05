@@ -36,58 +36,6 @@ $result = mysqli_query($conn, $sql);
         </ul>
     </header>
 
-    <!-- CSS for Dropdown Button (Filter Button). Nagkakaconflict kasi sa ibang tags kaya
-    ginawa ko na lang dito sa loob ng events page. Minimize niyo na lang -->
-    <style>
-        .dropbtn {
-            background-color: #EFBC9B;
-            color: black;
-            padding: 14px;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            border-radius: 61px;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #EFBC9B;
-            border-radius: 20px;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-            border-radius: 20px;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #EFBC9B;
-            border-radius: 20px;
-        }
-        .event-images {
-            display: none; /* Hide images by default */
-        }
-    </style>
-
     <section class="parallax-events">
         <div>
             <center>
@@ -118,7 +66,6 @@ $result = mysqli_query($conn, $sql);
                 
                 }
 
-
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<button class="event-list" onclick="toggleEventDetails(' . $row['id'] . ')">';
                     echo '<div class="event-details" id="event-details-' . $row['id'] . '">';
@@ -134,6 +81,7 @@ $result = mysqli_query($conn, $sql);
                     '<a href="' . $eventurl . '" class="read-more-link"><b>Read More</b></a></h4>'; 
                     echo '</div>';
                     echo '<div class="event-images" id="images-' . $row['id'] . '">';
+                    echo '<center>';
                     for ($i = 1; $i <= 4; $i++) {
                         if(!empty($row['event_images_' . $i])){
                         $image_data = base64_encode($row['event_images_' . $i]);
@@ -141,7 +89,7 @@ $result = mysqli_query($conn, $sql);
                         echo '<img class="event-image" src="' . $image_src . '">';
                         }
                     }
-                    echo '</div>';
+                    echo '</div> </center>';
                     echo '</button>';
 
                     

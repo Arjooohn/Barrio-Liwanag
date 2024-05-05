@@ -29,11 +29,13 @@
             <input type="password" name="password" placeholder="Password" required>
             <!-- <label>Password</label> -->
           </div>
+          <br>
           <center>
             <button type="submit" name="login" value="Login">Login</button>
           </center>
 
           <!-- showcase invalid user/pass on screen --> 
+          <br>
           <center>
             <?php
               if(isset($_GET['error']) && $_GET['error'] == 1) {

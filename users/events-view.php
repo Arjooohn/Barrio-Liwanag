@@ -250,26 +250,41 @@
 	</header> 
     
     <section>
-        
         <div class="eventcontainer">          
             <!-- Left Container -->
-            <div class="eventcontainer-left">
-                <!-- Go back button -->
-                <a href="javascript:history.back()" class="btn btn-secondary" style="margin-right: 10px; margin-bottom: 10px;">Go back</a>
-                <strong style="font-size: 40px;"><?php echo $eventname; ?></strong> <!--Event Name -->
-                <h4> 
-                    <?php 
-                    if( $eventdate == $event_enddate){  //for single day events
-                        echo $eventdate;
-                    }else{                              //for multiple day events
-                        echo $eventdate." - " . $event_enddate ;
-                    }
-                    ?>
-                </h4>
-                <p style="padding-right: 20px; text-align:justify;"> 
-                    <?php echo $eventdesc; ?>           
-                </p>
-            </div>
+                <div class="eventcontainer-left">
+                    <!-- Go back button -->
+                    <a href="javascript:history.back()" class="btn btn-secondary" style="margin-right: 10px; margin-bottom: 10px;">Go back</a>
+                    <strong style="font-size: 40px;"><?php echo $eventname; ?></strong> <!--Event Name -->
+                    <h4> 
+                        <?php 
+                        // Determine event status
+                        $status = '';
+                        $current_date = date('Y-m-d');
+                        if ($eventdate <= $current_date && $current_date <= $event_enddate) {
+                            $status = 'ONGOING';
+                            $color = 'green'; // ONGOING status color
+                        } elseif ($eventdate > $current_date) {
+                            $status = 'UPCOMING';
+                            $color = 'blue'; // UPCOMING status color
+                        } else {
+                            $status = 'CLOSED';
+                            $color = 'red'; // CLOSED status color
+                        }
+
+                        // Output event dates with status
+                        if ($eventdate == $event_enddate) { // for single day events
+                            echo $eventdate . " - <span style='color: $color;'>$status</span>";
+                        } else { // for multiple day events
+                            echo $eventdate . " - " . $event_enddate . " <span style='color: $color;'>($status)</span>";
+                        }
+                        ?>
+                    </h4>
+                    <p style="padding-right: 20px; text-align:justify;"> 
+                        <?php echo $eventdesc; ?>           
+                    </p>
+                </div>
+
             <!-- Right Container -->
             <div class="eventcontainer-right">
                 <!-- Carousel -->

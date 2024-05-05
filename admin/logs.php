@@ -34,7 +34,9 @@ $result = $conn->query($sql);
         </ul>
     </header>
 
-    <h2>Admin Logs</h2>
+    <center>
+        <h2>Admin Logs</h2>
+    </center>
 
     <!-- Admin Logs Table -->
     <table>

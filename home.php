@@ -58,7 +58,6 @@ if (!isset($_SESSION['role'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -189,18 +188,13 @@ if (!isset($_SESSION['role'])) {
                     id tincidunt dui nulla non massa. Nunc ac ex quis orci tempus molestie id nec leo. Aliquam erat volutpat. 
                     Pellentesque sed consectetur urna, id consectetur elit. Donec placerat elit nec lobortis fringilla. Morbi
                 </p>
-                <!-- <strong style="padding-right: 20px;"><p style="padding-right: 50px;">Social Media Account</p></strong> -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <br><br>
                 <center>
-                    <!-- <div class="social-media-container">
-                        <a href="https://www.facebook.com/barrioliwanag" class="social-media-link" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-                        <a href="https://www.twitter.com/" class="social-media-link" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-                        <a href="https://www.instagram.com/" class="social-media-link" target="_blank"><i class="fab fa-instagram"></i> Instagram </a>
-                    </div> -->
                     <div class="rating-card">
                         <div class="text-wrapper">
-                            <p class="text-primary">Please Rate Your Experience</p>
-                            <p class="text-secondary">to help us serve you better</p>
+                            <p class="text-primary">You can also find us on Facebook!</p>
+                            <p class="text-secondary">Give us a rating too!</p>
                         </div>
 
                         <div class="rating-stars-container">
@@ -251,7 +245,7 @@ if (!isset($_SESSION['role'])) {
                             </label>
                         </div>
                         <div class="socials-container">
-                            <a class="social-button" href="https://www.facebook.com/barrioliwanag">
+                            <a class="social-button" href="https://www.facebook.com/barrioliwanag" target="_blank">
                             <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                 d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"
@@ -278,10 +272,13 @@ if (!isset($_SESSION['role'])) {
             </div>
             <!-- Right Container -->
             <div class="container-right">
-                <img src="images/cover-pic-fb.jpg" alt="Barrio Liwanag Cover" width="100%">
-                <center>
-                    <strong style="font-size: 20px;"><h1>Barrio-Liwanag</h1></strong>
-                </center>
+                <!-- <img src="images/cover-pic-fb.jpg" alt="Barrio Liwanag Cover" width="100%"> -->
+                <!-- Google Maps iframe -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.8736273277486!2d121.07209801484294!3d14.652674789761855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c90073d6467d%3A0x548f557077051b71!2sUniversity%20of%20the%20Philippines%20Diliman!5e0!3m2!1sen!2sph!4v1620290541149!5m2!1sen!2sph" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <center>
+                        <br>
+                        <strong><h4>Barrio-Liwanag is @ University of the Philippines!</h4></strong>
+                    </center>
             </div>
         </div>
     </section>
@@ -290,20 +287,25 @@ if (!isset($_SESSION['role'])) {
 
     <!-- ABOUT US SECTION -->
     <section id="about_us">
-        <div class="container">
-            <center>
-                <div>
-                    <img src="images/cover-pic-fb.jpg" alt="Barrio Liwanag Cover" width="40%">
-                <!-- </div> -->
-                <p style="padding: 50px; text-align:justify;">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis turpis id odio convallis commodo. 
-                    Maecenas eget tortor leo. Sed elementum, arcu sed dictum iaculis, ante dui commodo enim, 
-                    id tincidunt dui nulla non massa. Nunc ac ex quis orci tempus molestie id nec leo. Aliquam erat volutpat. 
-                    Pellentesque sed consectetur urna, id consectetur elit. Donec placerat elit nec lobortis fringilla. Morbi
-                </p>
-            </center>
-            
-        </div>
+            <div class="card">
+                <div class="card-image"> <img src="images/about-us-page.jpg" alt="Barrio Liwanag Cover"> </div>
+                <div class="category"> 𝐊𝐀𝐌𝐔𝐒𝐓𝐀? 𝐊𝐀-𝐁𝐀𝐑𝐑𝐈𝐎?!</div>
+                <div class="heading"> 
+                    <div>
+                        <p>
+                            We are from 𝘽𝙖𝙧𝙧𝙞𝙤 𝙇𝙞𝙬𝙖𝙣𝙖𝙜, and our mission is to create and provide hope through  awareness and educate the public about issues that cause societal injustice. To also support through different groups that share our aims through raising funds. In the process, we hope to share our "liwanag" with those in need.
+                            Barrio Liwanag, was founded after discovering that our members shared similar views while reading each other's posts from other forums. Despite the fact that our themes differed, we understood via personal interactions that our core ideals were mostly about fairness and justice.
+                        </p>
+                        <div class="author"> This is <span class="name">Barrio Liwanag</div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Clouds -->
+            <div class='air air1'></div>
+            <div class='air air2'></div>
+            <div class='air air3'></div>
+            <div class='air air4'></div>
     </section>
     
     <!-- Back to Top Button with Up Arrow Icon -->

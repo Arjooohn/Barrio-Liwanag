@@ -94,16 +94,59 @@ header{
 
 .go-back-btn a {
     display: block;
-    padding: 10px 20px;
-    background-color: #4CAF50;
+    padding: 7.7px 25.5px;
+    background-color: red;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 13px;
     cursor: pointer;
 }
 
-.go-back-btn a:hover {
-    background-color: #45a049;
+/* Column Styles */
+.column {
+    flex: 1;
+    padding: 0 20px;
+    padding: 0 20px;
+    text-align: center;
+}
+/* Form container */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 600px) {
+    .form-columns {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .column {
+        flex: 1 1 50%; /* Each column takes up 50% of the container width */
+        padding: 0 10px;
+        text-align: center;
+    }
+}
+
+.notification-card {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+}
+
+/* Adjust the width of the text area */
+#description {
+    width: 100%; /* or specify a specific width in pixels or percentage */
+    max-width: 100%; /* Ensure it doesn't exceed the container width */
+    height: 50%;
 }

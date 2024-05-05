@@ -96,48 +96,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <li><a href="../php/logout.php">LOGOUT</a></li>
         </ul>
     </header>
+    <!-- Notification card -->
+    <div id="notification" class="notification-card"></div>
+        <!-- Form container to center the form -->
 
-    <!-- Update Event Section -->
     <section>
-        <center>
-        <div class="go-back-btn" style="margin-left: 50px;">
-            <a href="content_dashboard.php">Go Back</a>
-        </div>
-        <!-- Notification Section -->
-        <?php if(isset($notification)) { ?>
-            <div class="notification">
-                <?php echo $notification; ?>
+        <!-- Form container to center the form -->
+        <div class="form-container">
+            <!-- Form to update event -->
+            <div class="event-form page-title" style="font-size: small;">
+                <div style="font-size: xx-large;">
+                    <p><strong><b>Update Event</b></strong></p>
+                </div>
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . '?event_id=' . $event_id); ?>" enctype="multipart/form-data">
+                    <div class="form-columns" style="display: flex;">
+                        <!-- Left Column -->
+                        <div class="column" style="flex: 1;">
+                            <label for="eventname">Event Name:</label>
+                            <input type="text" id="eventname" name="eventname" value="<?php echo $eventname; ?>" required><br><br>
+
+                            <label for="description">Description:</label><br>
+                            <textarea id="description" name="description" rows="10" cols="50"><?php echo $description; ?></textarea><br><br>
+
+                            <label for="start_date">Start Date:</label>
+                            <input type="date" id="start_date" name="start_date" value="<?php echo $start_date; ?>" required><br><br>
+
+                            <label for="end_date">End Date:</label>
+                            <input type="date" id="end_date" name="end_date" value="<?php echo $end_date; ?>" required><br><br>
+                        </div>
+                        <!-- Right Column -->
+                        <div class="column" style="flex: 1;">
+                            <!-- File input fields for updating event images -->
+                            <?php for ($i = 1; $i <= 4; $i++) { ?>
+                                <label for="image<?php echo $i; ?>">Event Image <?php echo $i; ?>:</label>
+                                <input type="file" id="image<?php echo $i; ?>" name="image<?php echo $i; ?>"><br><br>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="go-back-btn">
+                        <a href="content_dashboard.php">Go Back</a>
+                    </div>
+                    <input type="submit" value="Update Event" class="create-btn">
+                </form>
             </div>
-        <?php } ?>
-        </center>
-        <!-- Form to update event -->
-        <div class="event-form page-title" style="font-size: small;">
-            <div style="font-size: xx-large;">
-                <p><strong><b>Update Event</b></strong></p>
-            </div>
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . '?event_id=' . $event_id); ?>" enctype="multipart/form-data">
-                <label for="eventname">Event Name:</label>
-                <input type="text" id="eventname" name="eventname" value="<?php echo $eventname; ?>" required><br><br>
-                
-                <label for="description">Description:</label><br>
-                <textarea id="description" name="description" rows="4" cols="50"><?php echo $description; ?></textarea><br><br>
-                
-                <label for="start_date">Start Date:</label>
-                <input type="date" id="start_date" name="start_date" value="<?php echo $start_date; ?>" required><br><br>
-                
-                <label for="end_date">End Date:</label>
-                <input type="date" id="end_date" name="end_date" value="<?php echo $end_date; ?>" required><br><br>
-                
-                <!-- File input fields for updating event images -->
-                <?php for ($i = 1; $i <= 4; $i++) { ?>
-                    <label for="image<?php echo $i; ?>">Event Image <?php echo $i; ?>:</label>
-                    <input type="file" id="image<?php echo $i; ?>" name="image<?php echo $i; ?>"><br><br>
-                <?php } ?>
-                <input type="submit" value="Update Event" class="create-btn">
-            </form>
         </div>
     </section>
 
+
+
+
+
+    <?php
+    // PHP code to display notification
+    if(isset($notification)) {
+        echo '<script>';
+        echo 'document.addEventListener("DOMContentLoaded", function() {';
+        echo '    var notification = document.getElementById("notification");';
+        echo '    notification.textContent = "' . $notification . '";';
+        echo '    notification.style.display = "block";';
+        echo '    setTimeout(function() {';
+        echo '        notification.style.display = "none";';
+        echo '    }, 5000);'; // Hide notification after 5 seconds
+        echo '});';
+        echo '</script>';
+    }
+    ?>
     <footer>
         <center>
             <p>&copy; Copyright Barrio Liwanag. All Rights Reserved 2024</p>
