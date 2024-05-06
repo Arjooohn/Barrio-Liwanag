@@ -37,9 +37,8 @@ $result = mysqli_query($conn, $sql);
     </header>
 
     <section class="parallax-events">
-        <div>
-            <center>
-                <br>
+        <div class="event-list-container">
+            <br>
                 <?php
                 //code to summarize string
                 function truncate_string ($string, $maxlength, $extension) {
@@ -69,6 +68,14 @@ $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<button class="event-list" onclick="toggleEventDetails(' . $row['id'] . ')">';
                     echo '<div class="event-details" id="event-details-' . $row['id'] . '">';
+                    
+                    //Display an image next to text, can be optimized
+                    if(!empty($row['event_images_' . 1])){
+                        $image_data = base64_encode($row['event_images_' . 1]);
+                        $image_src = 'data:image/jpeg;base64,' . $image_data; 
+                        echo '<img class="display-image" src="' . $image_src . '">';
+                        }
+
                     $eventurl = "events-view.php?eventid=" . $row['id']; // Read more code
                     echo '<strong><b><h1>' . $row['eventname'] . '</strong></b></h1>';
                     if($row['start_date'] ==$row['end_date']){  //for single day events
